@@ -63,7 +63,6 @@ const DemoModal = ({
           </h3>
           <RegisterForm
             onSubmit={(data) => {
-              console.log(data);
               createEmployee(data.name, data.surname, team.id, data.position);
               //this will reload the page without doing SSR
               setShowDemoModal(false);
