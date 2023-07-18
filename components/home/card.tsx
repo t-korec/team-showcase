@@ -146,7 +146,7 @@ export default function Card({
                                 isPastDate(emp.endDate)
                                   ? "text-gray-400"
                                   : "text-gray-500"
-                              } text-gray-500 truncate dark:text-gray-400`}
+                              } truncate dark:text-gray-400`}
                             >
                               {emp.position}
                             </p>
