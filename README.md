@@ -7,9 +7,9 @@ Create an application that displays data about Teams and their employees.
 * Implement using the React library. Feel free to use other libraries or frameworks using React.
 * Design an eye-pleasing visual, including mobile responsive display.
 * Way of styling or choosing a library of components of your own choice.
-* show/hide team content
-* employees who no longer work - should display endDate differently in the past
-* display the employee's name and position
+* Show/hide team content
+* Employees who no longer work - should be displayed differently
+* Display the employee's name and position
 * Design and implement the method of adding employees to the team.
 * The API is described here: https://github.com/Naomak/alveno-job
 
@@ -17,7 +17,7 @@ Time spend on the project: couple hours during weekend + 3h for last changes and
 
 Optional tasks(not included in this repo):
 
-* support for subteams nesting
+* Support for subteams nesting
 * Design and implement the addition of teams.
 * Design and implement employee editing.
 

@@ -118,17 +118,37 @@ export default function Card({
 
                 <Collapsible.Content>
                   {team.employees.map((emp) => {
+                    const isPastDate = (date: string | null | undefined) => {
+                      console.log(date);
+                      if (
+                        date &&
+                        new Date(date).getTime() < new Date().getTime()
+                      ) {
+                        return true;
+                      }
+                      return false;
+                    };
+
                     return (
-                      <li key={emp.id} className="">
+                      <li key={emp.id}>
                         <div className="flex items-center space-x-4">
-                          <div className="flex-shrink-0">
-                            {/*  <img className="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-1.jpg" alt="Neil image"> */}
-                          </div>
                           <div className="flex-1 min-w-0 py-2">
-                            <p className="text-sm font-medium text-gray-900 truncate dark:text-white">
+                            <p
+                              className={`text-sm font-medium ${
+                                isPastDate(emp.endDate)
+                                  ? "text-gray-400"
+                                  : "text-gray-900"
+                              } truncate dark:text-white`}
+                            >
                               {`${emp.name} ${emp.surname}`}
                             </p>
-                            <p className="text-sm text-gray-500 truncate dark:text-gray-400">
+                            <p
+                              className={`text-sm  ${
+                                isPastDate(emp.endDate)
+                                  ? "text-gray-400"
+                                  : "text-gray-500"
+                              } text-gray-500 truncate dark:text-gray-400`}
+                            >
                               {emp.position}
                             </p>
                           </div>
