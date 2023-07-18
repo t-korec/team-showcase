@@ -1,4 +1,4 @@
-import { EmployeeForm, TeamType, createEmployee } from "@/app/page";
+import { EmployeeForm, TeamType } from "@/app/page";
 import Modal from "@/components/shared/modal";
 import { useRouter } from "next/navigation";
 
@@ -10,6 +10,36 @@ import {
   useMemo,
 } from "react";
 import { useForm } from "react-hook-form";
+
+async function createEmployee(
+  name: string,
+  surname: string,
+  teamId: string,
+  position: string
+) {
+  const apiToken = process.env.TOKEN;
+
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set("Content-Type", "application/json");
+  requestHeaders.set("Prefer", "return=minimal");
+
+  if (apiToken) {
+    requestHeaders.set("apikey", apiToken);
+    requestHeaders.set("Authorization", `Bearer ${apiToken}`);
+    let bodyContent = JSON.stringify({
+      name,
+      surname,
+      team: teamId,
+      position,
+    });
+
+    await fetch("https://nktebdhspzvpwguqcksn.supabase.co/rest/v1/employees", {
+      method: "POST",
+      body: bodyContent,
+      headers: requestHeaders,
+    });
+  }
+}
 
 const DemoModal = ({
   team,

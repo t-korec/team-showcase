@@ -70,36 +70,7 @@ export interface EmployeeForm {
   surname: string;
   startDate?: string;
   endDate?: string;
-  // team: "ada9b82b-8dad-4573-b3e8-1bf22ce822a6",
   position: string;
-}
-
-export async function createEmployee(
-  name: string,
-  surname: string,
-  teamId: string,
-  position: string
-) {
-  const requestHeaders: HeadersInit = new Headers();
-  requestHeaders.set("Content-Type", "application/json");
-  requestHeaders.set("Prefer", "return=minimal");
-
-  if (apiToken) {
-    requestHeaders.set("apikey", apiToken);
-    requestHeaders.set("Authorization", `Bearer ${apiToken}`);
-    let bodyContent = JSON.stringify({
-      name,
-      surname,
-      team: teamId,
-      position,
-    });
-
-    await fetch("https://nktebdhspzvpwguqcksn.supabase.co/rest/v1/employees", {
-      method: "POST",
-      body: bodyContent,
-      headers: requestHeaders,
-    });
-  }
 }
 
 export default async function Home() {

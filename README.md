@@ -1,34 +1,43 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Task
 
-First, run the development server:
+Create an application that displays data about Teams and their employees.
+
+* Implement using the React library. Feel free to use other libraries or frameworks using React.
+* Design an eye-pleasing visual, including mobile responsive display.
+* Way of styling or choosing a library of components of your own choice.
+* show/hide team content
+* employees who no longer work - should display endDate differently in the past
+* display the employee's name and position
+* Design and implement the method of adding employees to the team.
+* The API is described here: https://github.com/Naomak/alveno-job
+
+Time spend on the project: couple hours during weekend + 3h for last changes and deploing
+
+Optional tasks(not included in this repo):
+
+* support for subteams nesting
+* Design and implement the addition of teams.
+* Design and implement employee editing.
+
+Note: I also used this project as opportunity to learn and try new technologies like nextjs, zod, react-hook-form.
+
+## Setup
+
+Inside this directory run:
 
 ```bash
+npm i
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Technologies used
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+* tailwindCSS
+* nextjs
+* Zod
+* react-hook-form
+* radix-ui
