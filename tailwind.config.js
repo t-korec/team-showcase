@@ -61,7 +61,6 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/typography"),
     plugin(({ addVariant }) => {
       addVariant("radix-side-top", '&[data-side="top"]');
       addVariant("radix-side-bottom", '&[data-side="bottom"]');

@@ -40,7 +40,7 @@ export default function Card({
         <h2 className="pt-10 bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent md:text-3xl md:font-normal">
           <Balancer>{title}</Balancer>
         </h2>
-        <div className="prose-sm -mt-2 leading-normal text-gray-500 md:prose py-5">
+        <div className="-mt-2 leading-normal text-gray-500 py-5">
           <Balancer>{description}</Balancer>
         </div>
 
