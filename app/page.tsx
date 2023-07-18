@@ -37,19 +37,21 @@ const teamsSchema = z.array(teamSchema);
 export type TeamType = z.infer<typeof teamSchema>;
 export type EmployeeType = z.infer<typeof employeeSchema>;
 
-async function getTeams() {
-  let headersList = {
-    Accept: "*/*",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    apikey: process.env.TOKEN,
-    Authorization: `Bearer ${process.env.TOKEN}`,
-  };
+const apiToken = process.env.TOKEN;
 
+async function getTeams() {
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set("Accept", "*/*");
+  if (apiToken) {
+    requestHeaders.set("apikey", apiToken);
+    requestHeaders.set("Authorization", `Bearer ${apiToken}`);
+  }
   let response = await fetch(
     "https://nktebdhspzvpwguqcksn.supabase.co/rest/v1/teams?select=*%2Cemployees(*)",
     {
       method: "GET",
-      headers: headersList,
+      cache: "no-cache",
+      headers: requestHeaders,
     }
   );
 
@@ -63,33 +65,41 @@ async function getTeams() {
   return data.data;
 }
 
-async function createEmployee(username: string) {
-  let headersList = {
-    Accept: "*/*",
-    "User-Agent": "Thunder Client (https://www.thunderclient.com)",
-    apikey: process.env.TOKEN,
-    Authorization: `Bearer ${process.env.TOKEN}`,
-    "Content-Type": "application/json",
-    Prefer: "return=minimal",
-  };
+export interface EmployeeForm {
+  name: string;
+  surname: string;
+  startDate?: string;
+  endDate?: string;
+  // team: "ada9b82b-8dad-4573-b3e8-1bf22ce822a6",
+  position: string;
+}
 
-  let bodyContent = JSON.stringify({
-    name: "Gabriela",
-    surname: "Konečná",
-    startDate: "2018-01-01",
-    endDate: "2022-03-31",
-    team: "ada9b82b-8dad-4573-b3e8-1bf22ce822a6",
-    position: "cto",
-  });
+export async function createEmployee(
+  name: string,
+  surname: string,
+  teamId: string,
+  position: string
+) {
+  const requestHeaders: HeadersInit = new Headers();
+  requestHeaders.set("Content-Type", "application/json");
+  requestHeaders.set("Prefer", "return=minimal");
 
-  let response = await fetch(
-    "https://nktebdhspzvpwguqcksn.supabase.co/rest/v1/employees",
-    {
+  if (apiToken) {
+    requestHeaders.set("apikey", apiToken);
+    requestHeaders.set("Authorization", `Bearer ${apiToken}`);
+    let bodyContent = JSON.stringify({
+      name,
+      surname,
+      team: teamId,
+      position,
+    });
+
+    await fetch("https://nktebdhspzvpwguqcksn.supabase.co/rest/v1/employees", {
       method: "POST",
       body: bodyContent,
-      headers: headersList,
-    }
-  );
+      headers: requestHeaders,
+    });
+  }
 }
 
 export default async function Home() {
@@ -99,7 +109,7 @@ export default async function Home() {
     <>
       <div className="z-10 w-full max-w-xl px-5 xl:px-0">
         <a
-          href=""
+          href="https://github.com/t-korec/team-showcase"
           target="_blank"
           rel="noreferrer"
           className="mx-auto mb-5 flex max-w-fit animate-fade-up items-center justify-center space-x-2 overflow-hidden rounded-full bg-blue-100 px-7 py-2 transition-colors hover:bg-blue-200"
@@ -119,11 +129,11 @@ export default async function Home() {
           <Balancer>
             Unleash the X-Factor of Organizational Insights Dive into our
             Cutting-Edge Web App and Uncover the Hidden Dynamics of Your
-            Company's DNA!
+            Company&apos;s DNA!
           </Balancer>
         </p>
       </div>
-      <ShowTeams teams={teams} />
+      {teams && <ShowTeams teams={teams} />}
     </>
   );
 }

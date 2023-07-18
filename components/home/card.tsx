@@ -17,13 +17,13 @@ export default function Card({
   team,
 }: {
   title: string;
-  team?: TeamType;
+  team: TeamType;
   description: string;
   demo?: ReactNode;
   large?: boolean;
   subTeams?: TeamType[];
 }) {
-  const { DemoModal, setShowDemoModal } = useDemoModal();
+  const { DemoModal, setShowDemoModal } = useDemoModal(team);
   const [open, setOpen] = useState(false);
 
   return (
@@ -153,11 +153,3 @@ export default function Card({
     </div>
   );
 }
-
-const SmallCard = () => {
-  return (
-    <div
-      className={`relative w-10 h-10 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md`}
-    ></div>
-  );
-};

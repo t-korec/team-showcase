@@ -4,6 +4,13 @@ import { useState } from "react";
 import Card from "./card";
 import { TeamType } from "@/app/page";
 
+const options: Intl.DateTimeFormatOptions = {
+  weekday: "long" as "long" | "short" | "narrow",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+};
+
 export default function ShowTeams({ teams }: { teams: TeamType[] }) {
   const [all, setAll] = useState(false);
   return (
@@ -40,13 +47,6 @@ export default function ShowTeams({ teams }: { teams: TeamType[] }) {
           {all ? (
             <>
               {teams?.map((team) => {
-                const options = {
-                  weekday: "long",
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                } as any;
-
                 return (
                   <Card
                     key={team.id}
@@ -68,12 +68,6 @@ export default function ShowTeams({ teams }: { teams: TeamType[] }) {
                   const subTeams = teams.filter(
                     (aTeam) => aTeam.parentTeam === team.id
                   );
-                  const options = {
-                    weekday: "long",
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  } as any;
 
                   return (
                     <Card
