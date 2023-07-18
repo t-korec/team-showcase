@@ -5,7 +5,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 Create an application that displays data about Teams and their employees.
 
 * Implement using the React library. Feel free to use other libraries or frameworks using React.
-* Design an eye-pleasing visual, including mobile responsive display.
+* Design an eye-pleasing visual, including a mobile responsive display.
 * Way of styling or choosing a library of components of your own choice.
 * Show/hide team content
 * Employees who no longer work - should be displayed differently
@@ -13,7 +13,7 @@ Create an application that displays data about Teams and their employees.
 * Design and implement the method of adding employees to the team.
 * The API is described here: https://github.com/Naomak/alveno-job
 
-Time spend on the project: couple hours during weekend + 3h for last changes and deploing
+Time spent on the project: couple hours during the weekend + 3h for the last changes and deploying
 
 Optional tasks(not included in this repo):
 
@@ -21,7 +21,7 @@ Optional tasks(not included in this repo):
 * Design and implement the addition of teams.
 * Design and implement employee editing.
 
-Note: I also used this project as opportunity to learn and try new technologies like nextjs, zod, react-hook-form.
+Note: I also used this project as an opportunity to learn and try new technologies like nextjs, zod, react-hook-form.
 
 ## Setup
 
