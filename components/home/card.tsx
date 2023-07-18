@@ -119,7 +119,6 @@ export default function Card({
                 <Collapsible.Content>
                   {team.employees.map((emp) => {
                     const isPastDate = (date: string | null | undefined) => {
-                      console.log(date);
                       if (
                         date &&
                         new Date(date).getTime() < new Date().getTime()
