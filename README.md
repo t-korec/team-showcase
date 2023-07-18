@@ -13,7 +13,7 @@ Create an application that displays data about Teams and their employees.
 * Design and implement the method of adding employees to the team.
 * The API is described here: https://github.com/Naomak/alveno-job
 
-Time spent on the project: couple hours during the weekend + 3h for the last changes and deploying
+Time spent on the project: a couple of hours during the weekend + 3h for the last changes and deploying
 
 Optional tasks(not included in this repo):
 
@@ -21,7 +21,7 @@ Optional tasks(not included in this repo):
 * Design and implement the addition of teams.
 * Design and implement employee editing.
 
-Note: I also used this project as an opportunity to learn and try new technologies like nextjs, zod, react-hook-form.
+Note: I used this project as an opportunity to learn and try new technologies like nextjs, zod, react-hook-form. Also, this is *not* an accurate representation of what my usual production code looks like. I usually do more iteration and optimize things like data fetching and separating code into more reusable components.  
 
 ## Setup
 
