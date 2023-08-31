@@ -66,7 +66,7 @@ export default function ShowTeams({ teams }: { teams: TeamType[] }) {
                 ?.filter((team) => team.parentTeam == null)
                 .map((team) => {
                   const subTeams = teams.filter(
-                    (aTeam) => aTeam.parentTeam === team.id
+                    (aTeam) => aTeam.parentTeam === team.name
                   );
 
                   return (
