@@ -1,5 +1,6 @@
 import { EmployeeForm, TeamType } from "@/app/page";
 import Modal from "@/components/shared/modal";
+import { config } from "@/lib/config/base-config";
 import { useRouter } from "next/navigation";
 
 import {
@@ -14,7 +15,7 @@ import { useForm } from "react-hook-form";
 async function createEmployee(
   name: string,
   surname: string,
-  teamId: string,
+  teamId: number,
   position: string
 ) {
   const apiToken = process.env.TOKEN;
@@ -33,7 +34,7 @@ async function createEmployee(
       position,
     });
 
-    await fetch("https://nktebdhspzvpwguqcksn.supabase.co/rest/v1/employees", {
+    await fetch(`${config.url}/Employee`, {
       method: "POST",
       body: bodyContent,
       headers: requestHeaders,

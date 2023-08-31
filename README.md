@@ -11,7 +11,6 @@ Create an application that displays data about Teams and their employees.
 * Employees who no longer work - should be displayed differently
 * Display the employee's name and position
 * Design and implement the method of adding employees to the team.
-* The API is described here: https://github.com/Naomak/alveno-job
 
 Time spent on the project: couple hours during the weekend + 3h for the last changes and deploying
 
@@ -22,6 +21,10 @@ Optional tasks(not included in this repo):
 * Design and implement employee editing.
 
 Note: I also used this project as an opportunity to learn and try new technologies like nextjs, zod, react-hook-form.
+
+## App
+
+![Alt text](image.png)
 
 ## Setup
 

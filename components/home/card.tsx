@@ -11,7 +11,6 @@ import Tooltip from "../shared/tooltip";
 export default function Card({
   title,
   description,
-  demo,
   large,
   subTeams,
   team,
@@ -19,7 +18,6 @@ export default function Card({
   title: string;
   team: TeamType;
   description: string;
-  demo?: ReactNode;
   large?: boolean;
   subTeams?: TeamType[];
 }) {
@@ -32,10 +30,6 @@ export default function Card({
         large ? "md:col-span-2" : ""
       }`}
     >
-      {demo && (
-        <div className="flex h-60 items-center justify-center">{demo}</div>
-      )}
-
       <div className="mx-auto max-w-md text-center flex flex-col items-center">
         <h2 className="pt-10 bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-xl font-bold text-transparent md:text-3xl md:font-normal">
           <Balancer>{title}</Balancer>
@@ -46,7 +40,7 @@ export default function Card({
 
         {subTeams && (
           <div className="flex flex-col">
-            <div>Subteams</div>
+            {subTeams.length !== 0 && <div>Subteams</div>}
             <div className="flex gap-2 pt-2">
               {subTeams.map((subTeam) => {
                 if (subTeam.name.length > 9) {
@@ -79,8 +73,8 @@ export default function Card({
           </div>
         )}
 
-        {team?.employees && (
-          <div className="flex flex-col w-full px-5 py-5">
+        {team?.Employee && (
+          <div className="flex flex-col w-full p-5 ">
             <ul className="max-w-md divide-y divide-gray-200 dark:divide-gray-700 text-left">
               <Collapsible.Root open={open} onOpenChange={setOpen}>
                 <div className="flex items-center justify-between px-4">
@@ -88,7 +82,7 @@ export default function Card({
                     <button
                       type="button"
                       onClick={() => setOpen(!open)}
-                      className="flex items-center justify-between w-full py-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
+                      className="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400"
                       data-accordion-target="#accordion-flush-body-1"
                       aria-expanded="true"
                       aria-controls="accordion-flush-body-1"
@@ -117,45 +111,51 @@ export default function Card({
                 </div>
 
                 <Collapsible.Content>
-                  {team.employees.map((emp) => {
-                    const isPastDate = (date: string | null | undefined) => {
-                      if (
-                        date &&
-                        new Date(date).getTime() < new Date().getTime()
-                      ) {
-                        return true;
-                      }
-                      return false;
-                    };
+                  {team.Employee.length !== 0 ? (
+                    team.Employee.map((emp) => {
+                      const isPastDate = (date: string | null | undefined) => {
+                        if (
+                          date &&
+                          new Date(date).getTime() < new Date().getTime()
+                        ) {
+                          return true;
+                        }
+                        return false;
+                      };
 
-                    return (
-                      <li key={emp.id}>
-                        <div className="flex items-center space-x-4">
-                          <div className="flex-1 min-w-0 py-2">
-                            <p
-                              className={`text-sm font-medium ${
-                                isPastDate(emp.endDate)
-                                  ? "text-gray-400"
-                                  : "text-gray-900"
-                              } truncate dark:text-white`}
-                            >
-                              {`${emp.name} ${emp.surname}`}
-                            </p>
-                            <p
-                              className={`text-sm  ${
-                                isPastDate(emp.endDate)
-                                  ? "text-gray-400"
-                                  : "text-gray-500"
-                              } truncate dark:text-gray-400`}
-                            >
-                              {emp.position}
-                            </p>
+                      return (
+                        <li key={emp.id}>
+                          <div className="flex px-7 py-1 items-center space-x-4">
+                            <div className="flex-1 min-w-0 py-2">
+                              <p
+                                className={`text-sm font-medium ${
+                                  isPastDate(emp.endDate)
+                                    ? "text-gray-400"
+                                    : "text-gray-900"
+                                } truncate dark:text-white`}
+                              >
+                                {`${emp.name} ${emp.surname}`}
+                              </p>
+                              <p
+                                className={`text-sm  ${
+                                  isPastDate(emp.endDate)
+                                    ? "text-gray-400"
+                                    : "text-gray-500"
+                                } truncate dark:text-gray-400`}
+                              >
+                                {emp.position}
+                              </p>
+                            </div>
+                            <div className="inline-flex items-center text-base text-gray-900 dark:text-white"></div>
                           </div>
-                          <div className="inline-flex items-center text-base text-gray-900 dark:text-white"></div>
-                        </div>
-                      </li>
-                    );
-                  })}
+                        </li>
+                      );
+                    })
+                  ) : (
+                    <div className="text-gray-400 text-sm p-4 text-center ">
+                      No employees
+                    </div>
+                  )}
                 </Collapsible.Content>
               </Collapsible.Root>
             </ul>

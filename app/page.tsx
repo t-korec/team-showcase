@@ -1,4 +1,5 @@
 import ShowTeams from "@/components/home/show-teams";
+import { config } from "@/lib/config/base-config";
 import { Balancer } from "react-wrap-balancer";
 
 import { z } from "zod";
@@ -15,22 +16,22 @@ export interface Employee {
 }
 
 const employeeSchema = z.object({
-  id: z.string(),
+  id: z.number(),
   createdAt: z.string(),
   name: z.string(),
   surname: z.string(),
   startDate: z.string().nullish(),
   endDate: z.string().nullish(),
-  team: z.string(),
+  team: z.number(),
   position: z.string().nullish(),
 });
 
 const teamSchema = z.object({
-  id: z.string(),
+  id: z.number(),
   createdAt: z.string(),
   name: z.string(),
   parentTeam: z.string().nullish(),
-  employees: z.array(employeeSchema),
+  Employee: z.array(employeeSchema),
 });
 const teamsSchema = z.array(teamSchema);
 
@@ -46,14 +47,11 @@ async function getTeams() {
     requestHeaders.set("apikey", apiToken);
     requestHeaders.set("Authorization", `Bearer ${apiToken}`);
   }
-  let response = await fetch(
-    "https://nktebdhspzvpwguqcksn.supabase.co/rest/v1/teams?select=*%2Cemployees(*)",
-    {
-      method: "GET",
-      cache: "no-cache",
-      headers: requestHeaders,
-    }
-  );
+  let response = await fetch(`${config.url}/Team?select=*%2CEmployee(*)`, {
+    method: "GET",
+    cache: "no-cache",
+    headers: requestHeaders,
+  });
 
   const data = teamsSchema.safeParse(await response.json());
   if (!data.success) {
