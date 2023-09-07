@@ -12,15 +12,29 @@ Create an application that displays data about Teams and their employees.
 * Display the employee's name and position
 * Design and implement the method of adding employees to the team.
 
-Time spent on the project: a couple of hours during the weekend + 3h for the last changes and deploying
-
 Optional tasks(not included in this repo):
 
-* Support for subteams nesting
 * Design and implement the addition of teams.
 * Design and implement employee editing.
+* Design and implement teams editing.
+* Support for subteams nesting
 
-Note: I used this project as an opportunity to learn and try new technologies like nextjs, zod, react-hook-form. Also, this is *not* an accurate representation of what my usual production code looks like. I usually do more iteration and optimize things like data fetching and separating code into more reusable components.  
+Total time spent on the project: 23h (approx 3working days)
+
+## Timeline
+
+v0.1
+- (1h) find nice nextjs template [x]
+- (20h) complete main task parts [x]
+- (2h) create own supabase BE [x]
+
+to be done:
+v0.1.1
+- use optimistic update for updating employee due to missing option in next js app router cashing: https://youtu.be/7BgzXp35ZuU?si=eyqtvGZKeM01yi2x
+
+v0.2 
+- add first 3 optional tasks
+
 
 ## App
 
