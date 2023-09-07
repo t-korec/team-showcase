@@ -28,7 +28,7 @@ v0.1
 - (20h) complete main task parts [x]
 - (2h) create own supabase BE [x]
 
-to be done:
+to be done:  
 
 v0.1.1
 - use optimistic update for updating employee due to missing option in next js app router cashing: https://youtu.be/7BgzXp35ZuU?si=eyqtvGZKeM01yi2x
