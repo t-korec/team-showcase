@@ -19,10 +19,10 @@ export default function NavBar() {
         <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between w-full">
           <Link href="/" className="flex items-center font-display text-2xl">
             <Image
-              src="/alveno-logo-dark.svg"
+              src="/premium.png"
               alt="Precedent logo"
-              width="100"
-              height="100"
+              width="35"
+              height="35"
               className="mr-2 rounded-sm"
             ></Image>
             <p>Teams</p>
