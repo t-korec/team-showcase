@@ -1,7 +1,7 @@
 "use client";
 
 import { TeamType } from "@/app/page";
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import * as Collapsible from "@radix-ui/react-collapsible";
 
 import Balancer from "react-wrap-balancer";
